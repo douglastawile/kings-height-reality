@@ -1,11 +1,15 @@
 "use client";
 
-import { Link } from "react-router-dom";
-import { Navbar } from "flowbite-react";
+import { Link, NavLink } from "react-router-dom";
+import { Navbar, DarkThemeToggle } from "flowbite-react";
 
 const Navigation = () => {
   return (
-    <Navbar fluid rounded>
+    <Navbar
+      fluid
+      rounded
+      className="fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600"
+    >
       <Link to={`/`}>
         <Navbar.Brand as={"div"}>
           <img
@@ -19,16 +23,23 @@ const Navigation = () => {
         </Navbar.Brand>
       </Link>
       <Navbar.Toggle />
+      <DarkThemeToggle />
       <Navbar.Collapse>
-        <Navbar.Link href="#" active>
-          Home
-        </Navbar.Link>
-        <Navbar.Link as={Link} href="#">
-          About
-        </Navbar.Link>
-        <Navbar.Link href="#">Services</Navbar.Link>
-        <Navbar.Link href="#">Pricing</Navbar.Link>
-        <Navbar.Link href="#">Contact</Navbar.Link>
+        <NavLink to={`/`}>
+          <Navbar.Link as={"div"}>Home</Navbar.Link>
+        </NavLink>
+
+        <NavLink to={`/services`}>
+          <Navbar.Link as={"div"}>Services</Navbar.Link>
+        </NavLink>
+
+        <NavLink to={`/about`}>
+          <Navbar.Link as={"div"}>About</Navbar.Link>
+        </NavLink>
+
+        <NavLink to={`/contact`}>
+          <Navbar.Link as={"div"}>Contact Us</Navbar.Link>
+        </NavLink>
       </Navbar.Collapse>
     </Navbar>
   );

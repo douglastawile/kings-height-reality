@@ -1,18 +1,18 @@
 import { BrowserRouter } from "react-router-dom";
+import { Flowbite } from "flowbite-react";
+
 import AppMainRoutes from "./AppMainRoutes";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <div className="container">
-      <BrowserRouter>
-        <header>
-          <Navigation />
-        </header>
+    <BrowserRouter>
+      <Flowbite>
+        <Navigation />
         <AppMainRoutes />
         <Footer />
-      </BrowserRouter>
-    </div>
+      </Flowbite>
+    </BrowserRouter>
   );
 }
