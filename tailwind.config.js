@@ -13,5 +13,5 @@ export default {
     extend: {},
   },
   plugins: [require("flowbite/plugin"), flowbite.plugin()],
-  darkMode: "media",
+  darkMode: "selector",
 };

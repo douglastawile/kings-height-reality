@@ -7,7 +7,7 @@ const Footer = () => {
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
           &copy; {new Date().getFullYear()}{" "}
           <Link to="/" className="hover:underline">
-            Kings Height Reality™
+            Kings Height Realty™
           </Link>
           . All Rights Reserved.
         </span>

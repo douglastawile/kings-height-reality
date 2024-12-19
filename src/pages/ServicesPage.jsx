@@ -11,379 +11,83 @@ const ServicesPage = () => {
   }, []);
 
   return (
-    <section className="dark:bg-gray-800">
-      <h1 className="mb-4 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-        Our Services
-      </h1>
-      <Card className="max-w-xl mx-2 my-4 sm:max-w-xl sm:mx-auto">
-        <div className="mb-4 flex items-center justify-between">
-          <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
-            Some of the things we do
-          </h5>
-        </div>
-        <div className="flow-root">
-          <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-            <li className="py-3 sm:py-4">
-              <div className="flex items-center space-x-4">
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-lg font-medium text-gray-900 dark:text-white">
-                    Real Estate Agency
-                  </p>
+    <main className="dark:bg-gray-800">
+      <header>
+        <h1 className="mb-4 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+          Our Services
+        </h1>
+      </header>
+
+      <section className="flex flex-wrap justify-center items-center rounded-lg">
+        <Card className="max-w-xl mx-2 my-4 sm:max-w-xl">
+          <img
+            className="h-auto max-w-xl rounded-lg shadow-xl dark:shadow-gray-800"
+            src="logos/details.jpg"
+            alt="image description"
+          />
+        </Card>
+      </section>
+
+      <section>
+        <Card className="rounded-lg shadow-lg mb-16 p-2">
+          <Tabs aria-label="Our Services" variant="pills">
+            {[
+              {
+                title: "Real Estate Agency",
+                images: Array.from(
+                  { length: 7 },
+                  (_, i) => `structure/structure-${i + 1}.jpg`
+                ),
+              },
+              {
+                title: "Building and Construction",
+                images: Array.from(
+                  { length: 10 },
+                  (_, i) => `construction/construction-${i + 1}.jpg`
+                ),
+              },
+              {
+                title: "Land Planning",
+                images: Array.from(
+                  { length: 9 },
+                  (_, i) => `planning/plan-${i + 1}.jpg`
+                ),
+              },
+              {
+                title: "Interior Designs",
+                images: Array.from(
+                  { length: 8 },
+                  (_, i) => `design/design-${i + 1}.jpg`
+                ),
+              },
+              {
+                title: "Land Surveying and Mapping",
+                images: Array.from(
+                  { length: 3 },
+                  (_, i) => `survey/survey-${i + 1}.jpg`
+                ),
+              },
+            ].map(({ title, images }, tabIndex) => (
+              <Tabs.Item key={tabIndex} title={title}>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  {images.map((src, imgIndex) => (
+                    <div key={imgIndex}>
+                      <img
+                        className="h-auto max-w-full rounded-lg"
+                        src={src}
+                        alt={`${title} example ${imgIndex + 1}`}
+                        aria-label={`${title} example ${imgIndex + 1}`}
+                        loading="lazy" // Added lazy loading
+                      />
+                    </div>
+                  ))}
                 </div>
-              </div>
-            </li>
-
-            <li className="py-3 sm:py-4">
-              <div className="flex items-center space-x-4">
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-lg font-medium text-gray-900 dark:text-white">
-                    Land Sales
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li className="py-3 sm:py-4">
-              <div className="flex items-center space-x-4">
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-lg font-medium text-gray-900 dark:text-white">
-                    Land Survey and Mapping
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li className="py-3 sm:py-4">
-              <div className="flex items-center space-x-4">
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-lg font-medium text-gray-900 dark:text-white">
-                    Land Demarcation
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li className="py-3 sm:py-4">
-              <div className="flex items-center space-x-4">
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-lg font-medium text-gray-900 dark:text-white">
-                    Property Valuation
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li className="py-3 sm:py-4">
-              <div className="flex items-center space-x-4">
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-lg font-medium text-gray-900 dark:text-white">
-                    Building and Construction
-                  </p>
-                </div>
-              </div>
-            </li>
-
-            <li className="py-3 sm:py-4">
-              <div className="flex items-center space-x-4">
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-lg font-medium text-gray-900 dark:text-white">
-                    Project Management
-                  </p>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </Card>
-
-      <Card className="rounded-lg shadow-lg mt-2 mb-16 p-2">
-        <Tabs aria-label="Pills" variant="pills">
-          <Tabs.Item active title="Real Estate Agency">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="structure/structure-1.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="structure/structure-2.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="structure/structure-3.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="structure/structure-4.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="structure/structure-5.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="structure/structure-6.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="structure/structure-7.jpg"
-                  alt=""
-                />
-              </div>
-            </div>
-          </Tabs.Item>
-
-          <Tabs.Item title="Building and Construction">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="construction/construction-1.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="construction/construction-2.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="construction/construction-3.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="construction/construction-4.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="construction/construction-5.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="construction/construction-6.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="construction/construction-7.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="construction/construction-8.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="construction/construction-9.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="construction/construction-10.jpg"
-                  alt=""
-                />
-              </div>
-            </div>
-          </Tabs.Item>
-
-          <Tabs.Item title="Land Planning">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="planning/plan-1.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="planning/plan-2.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="planning/plan-3.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="planning/plan-4.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="planning/plan-5.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="planning/plan-6.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="planning/plan-7.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="planning/plan-8.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="planning/plan-9.jpg"
-                  alt=""
-                />
-              </div>
-            </div>
-          </Tabs.Item>
-
-          <Tabs.Item title="Interior Designs">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="design/design-1.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="design/design-2.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="design/design-3.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="design/design-4.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="design/design-5.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="design/design-6.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="design/design-7.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="design/design-8.jpg"
-                  alt=""
-                />
-              </div>
-            </div>
-          </Tabs.Item>
-
-          <Tabs.Item title="Land Surveying and Mapping">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="survey/survey-1.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="survey/survey-2.jpg"
-                  alt=""
-                />
-              </div>
-              <div>
-                <img
-                  className="h-auto max-w-full rounded-lg"
-                  src="survey/survey-3.jpg"
-                  alt=""
-                />
-              </div>
-            </div>
-          </Tabs.Item>
-        </Tabs>
-      </Card>
-    </section>
+              </Tabs.Item>
+            ))}
+          </Tabs>
+        </Card>
+      </section>
+    </main>
   );
 };
 
